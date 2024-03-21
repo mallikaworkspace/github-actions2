@@ -12,15 +12,42 @@ jobs:
         python-versions: [3.12, 3.9, 3.8]
 
     steps:
-      - name : checkout
-        uses : actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      - name : setup python
-        uses : actions/setup-python@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-versions }}
 
-      - name : run python program
-        uses : python index.py
-        with : 
-          python-version : ${{matrix.python-versions}}
+      - name: Run Python Program
+        run: |
+          python index.py
+
+
+# name: Python Program
+
+# on:
+#   workflow_dispatch
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     strategy:
+#       matrix:
+#         python-versions: [3.12, 3.9, 3.8]
+
+#     steps:
+#       - name : checkout
+#         uses : actions/checkout@v2
+
+#       - name : setup python
+#         uses : actions/setup-python@v2
+
+#       - name : run python program
+#         uses : python index.py
+#         with : 
+#           python-version : ${{matrix.python-versions}}
 
     
